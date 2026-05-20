@@ -1,0 +1,17 @@
+{
+  "id": "cet6",
+  "name": "大学英语六级",
+  "cefr": "B2",
+  "articleWordCount": { "min": 420, "max": 520 },
+  "targetWordCount": { "min": 8, "max": 12 },
+  "paragraphCount": { "min": 4, "max": 6 },
+  "sentenceLength": "medium-long",
+  "grammarComplexity": "medium-high",
+  "allowedQuestionTypes": ["main_idea", "detail", "inference", "vocabulary_in_context"],
+  "style": "academic and practical",
+  "difficultyNotes": [
+    "Use some abstract nouns and complex sentences.",
+    "Avoid overly literary or obscure expressions.",
+    "Include inference-based comprehension questions."
+  ]
+}

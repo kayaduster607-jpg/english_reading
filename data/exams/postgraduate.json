@@ -1,0 +1,17 @@
+{
+  "id": "postgraduate",
+  "name": "考研英语",
+  "cefr": "B2",
+  "articleWordCount": { "min": 500, "max": 650 },
+  "targetWordCount": { "min": 10, "max": 15 },
+  "paragraphCount": { "min": 5, "max": 7 },
+  "sentenceLength": "long",
+  "grammarComplexity": "high",
+  "allowedQuestionTypes": ["main_idea", "detail", "inference", "vocabulary_in_context"],
+  "style": "academic, formal, analytical",
+  "difficultyNotes": [
+    "Use complex sentence structures and academic vocabulary.",
+    "Include long sentences with multiple clauses.",
+    "Focus on logical reasoning and argument analysis."
+  ]
+}

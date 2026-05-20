@@ -1,0 +1,11 @@
+{
+  "id": "cet6-core",
+  "name": "CET-6 核心词汇",
+  "sourceType": "builtin",
+  "examTarget": "cet6",
+  "language": "en-cn",
+  "wordCount": 30,
+  "createdAt": "2026-05-20T00:00:00.000Z",
+  "updatedAt": "2026-05-20T00:00:00.000Z",
+  "tags": ["cet6", "core", "builtin"]
+}

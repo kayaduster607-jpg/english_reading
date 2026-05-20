@@ -1,0 +1,17 @@
+{
+  "id": "gaokao",
+  "name": "高考英语",
+  "cefr": "B1",
+  "articleWordCount": { "min": 300, "max": 450 },
+  "targetWordCount": { "min": 8, "max": 10 },
+  "paragraphCount": { "min": 4, "max": 6 },
+  "sentenceLength": "medium",
+  "grammarComplexity": "medium",
+  "allowedQuestionTypes": ["main_idea", "detail", "inference", "vocabulary_in_context"],
+  "style": "practical and informative",
+  "difficultyNotes": [
+    "Use moderate vocabulary and some complex sentences.",
+    "Include inference-based questions.",
+    "Cover topics like technology, environment, culture."
+  ]
+}

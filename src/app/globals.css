@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #2f6b4f;
+  --color-primary-light: #3d8b65;
+  --color-primary-dark: #1e4a35;
+  --color-accent: #e8a838;
+  --color-bg: #faf8f5;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+  --color-highlight-bg: rgba(80, 140, 100, 0.12);
+  --color-highlight-border: rgba(47, 107, 79, 0.6);
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --font-sans: 'Inter', 'system-ui', sans-serif;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reading article serif font */
+.reading-body {
+  font-family: var(--font-serif);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* Highlighted target word */
+.word-highlight {
+  color: var(--color-primary);
+  background: var(--color-highlight-bg);
+  border-bottom: 2px solid var(--color-highlight-border);
+  border-radius: 3px;
+  padding: 0 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-weight: 500;
+}
+
+.word-highlight:hover {
+  background: rgba(80, 140, 100, 0.25);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

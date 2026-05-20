@@ -1,0 +1,17 @@
+{
+  "id": "toefl",
+  "name": "托福",
+  "cefr": "C1",
+  "articleWordCount": { "min": 600, "max": 800 },
+  "targetWordCount": { "min": 10, "max": 15 },
+  "paragraphCount": { "min": 5, "max": 8 },
+  "sentenceLength": "long",
+  "grammarComplexity": "high",
+  "allowedQuestionTypes": ["main_idea", "detail", "inference", "vocabulary_in_context"],
+  "style": "academic, North American English",
+  "difficultyNotes": [
+    "Use academic English with complex sentence structures.",
+    "Include technical terminology in context.",
+    "Focus on comprehension of academic passages."
+  ]
+}

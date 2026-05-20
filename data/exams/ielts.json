@@ -1,0 +1,17 @@
+{
+  "id": "ielts",
+  "name": "雅思",
+  "cefr": "B2",
+  "articleWordCount": { "min": 650, "max": 900 },
+  "targetWordCount": { "min": 10, "max": 15 },
+  "paragraphCount": { "min": 6, "max": 8 },
+  "sentenceLength": "long",
+  "grammarComplexity": "high",
+  "allowedQuestionTypes": ["main_idea", "detail", "inference", "vocabulary_in_context"],
+  "style": "academic, international English",
+  "difficultyNotes": [
+    "Use academic English with international flavor.",
+    "Include information matching and opinion identification.",
+    "Cover diverse academic topics."
+  ]
+}

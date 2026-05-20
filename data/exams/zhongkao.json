@@ -1,0 +1,17 @@
+{
+  "id": "zhongkao",
+  "name": "中考英语",
+  "cefr": "A2",
+  "articleWordCount": { "min": 250, "max": 350 },
+  "targetWordCount": { "min": 6, "max": 8 },
+  "paragraphCount": { "min": 4, "max": 5 },
+  "sentenceLength": "short",
+  "grammarComplexity": "low",
+  "allowedQuestionTypes": ["detail", "main_idea", "vocabulary_in_context"],
+  "style": "simple and clear, daily life topics",
+  "difficultyNotes": [
+    "Use simple sentences and common vocabulary.",
+    "Avoid complex grammar structures.",
+    "Focus on factual details and basic comprehension."
+  ]
+}

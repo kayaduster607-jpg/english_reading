@@ -1,0 +1,238 @@
+{
+  "id": "reading_2026_05_20_cet6",
+  "date": "2026-05-20",
+  "userId": "default",
+  "examTarget": "cet6",
+  "cefr": "B2",
+  "topic": "technology and daily life",
+  "title": "Exploring the World of technology and daily life",
+  "wordCount": 187,
+  "sourceVocabBookIds": [
+    "cet6-core"
+  ],
+  "targetWords": [
+    {
+      "word": "acquire",
+      "meaningCn": "获得；学到",
+      "pos": "v."
+    },
+    {
+      "word": "assume",
+      "meaningCn": "假设；承担",
+      "pos": "v."
+    },
+    {
+      "word": "abandon",
+      "meaningCn": "放弃；抛弃",
+      "pos": "v."
+    },
+    {
+      "word": "accurate",
+      "meaningCn": "精确的；准确的",
+      "pos": "adj."
+    },
+    {
+      "word": "acknowledge",
+      "meaningCn": "承认；认可",
+      "pos": "v."
+    },
+    {
+      "word": "adapt",
+      "meaningCn": "适应；改编",
+      "pos": "v."
+    },
+    {
+      "word": "accelerate",
+      "meaningCn": "加速；促进",
+      "pos": "v."
+    },
+    {
+      "word": "advocate",
+      "meaningCn": "提倡；倡导者",
+      "pos": "v./n."
+    },
+    {
+      "word": "abstract",
+      "meaningCn": "抽象的；摘要",
+      "pos": "adj./n."
+    },
+    {
+      "word": "appropriate",
+      "meaningCn": "适当的；合适的",
+      "pos": "adj."
+    }
+  ],
+  "guideCn": "本文围绕\"technology and daily life\"展开，适合大学英语六级水平学习者。文章中自然嵌入了10个目标词汇，帮助你在语境中理解和记忆这些重要单词。",
+  "paragraphs": [
+    "In today's rapidly changing world, the concept of acquire has become increasingly important. Many researchers have begun to assume new approaches to understand how these changes affect our daily lives. The evidence suggests that we need to abandon more attention to this growing phenomenon.",
+    "Experts in the field argue that accurate is one of the key factors driving this transformation. When we acknowledge the current situation carefully, we can see that the impact extends far beyond what most people realize. It is adapt that this trend will continue to shape our future.",
+    "Some scholars take a more cautious approach, suggesting that we should not accelerate too quickly to conclusions. They believe that a advocate understanding of the underlying principles is necessary before we can make meaningful progress. The abstract of their research points to a more nuanced view of the issue.",
+    "In appropriate, the journey toward understanding these complex issues requires both patience and dedication. As we continue to explore new possibilities, we must remain open to different perspectives and be willing to adapt our thinking accordingly. The future depends on our ability to learn and grow."
+  ],
+  "vocabularyInContext": [
+    {
+      "word": "acquire",
+      "sentence": "In today's rapidly changing world, the concept of acquire has become increasingly important.",
+      "meaningCn": "获得；学到",
+      "noteCn": "注意 acquire 在文中的用法和搭配。"
+    },
+    {
+      "word": "assume",
+      "sentence": "Many researchers have begun to assume new approaches to understand how these changes affect our daily lives.",
+      "meaningCn": "假设；承担",
+      "noteCn": "注意 assume 在文中的用法和搭配。"
+    },
+    {
+      "word": "abandon",
+      "sentence": "The evidence suggests that we need to abandon more attention to this growing phenomenon.",
+      "meaningCn": "放弃；抛弃",
+      "noteCn": "注意 abandon 在文中的用法和搭配。"
+    },
+    {
+      "word": "accurate",
+      "sentence": "Experts in the field argue that accurate is one of the key factors driving this transformation.",
+      "meaningCn": "精确的；准确的",
+      "noteCn": "注意 accurate 在文中的用法和搭配。"
+    },
+    {
+      "word": "acknowledge",
+      "sentence": "When we acknowledge the current situation carefully, we can see that the impact extends far beyond what most people realize.",
+      "meaningCn": "承认；认可",
+      "noteCn": "注意 acknowledge 在文中的用法和搭配。"
+    },
+    {
+      "word": "adapt",
+      "sentence": "It is adapt that this trend will continue to shape our future.",
+      "meaningCn": "适应；改编",
+      "noteCn": "注意 adapt 在文中的用法和搭配。"
+    },
+    {
+      "word": "accelerate",
+      "sentence": "Some scholars take a more cautious approach, suggesting that we should not accelerate too quickly to conclusions.",
+      "meaningCn": "加速；促进",
+      "noteCn": "注意 accelerate 在文中的用法和搭配。"
+    },
+    {
+      "word": "advocate",
+      "sentence": "They believe that a advocate understanding of the underlying principles is necessary before we can make meaningful progress.",
+      "meaningCn": "提倡；倡导者",
+      "noteCn": "注意 advocate 在文中的用法和搭配。"
+    },
+    {
+      "word": "abstract",
+      "sentence": "The abstract of their research points to a more nuanced view of the issue.",
+      "meaningCn": "抽象的；摘要",
+      "noteCn": "注意 abstract 在文中的用法和搭配。"
+    },
+    {
+      "word": "appropriate",
+      "sentence": "In appropriate, the journey toward understanding these complex issues requires both patience and dedication.",
+      "meaningCn": "适当的；合适的",
+      "noteCn": "注意 appropriate 在文中的用法和搭配。"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "type": "main_idea",
+      "question": "What is the main idea of this passage?",
+      "options": [
+        "The passage discusses how acquire affects modern society.",
+        "The passage argues that technology has no impact on daily life.",
+        "The passage is mainly about the history of science.",
+        "The passage focuses on a single scientific discovery."
+      ],
+      "answer": "The passage discusses how acquire affects modern society.",
+      "explanationCn": "文章主要讨论了主题对现代社会的影响，涵盖了多个角度的分析。"
+    },
+    {
+      "id": "q2",
+      "type": "detail",
+      "question": "According to the passage, what role does \"assume\" play?",
+      "options": [
+        "It is considered irrelevant to the main argument.",
+        "It is described as a key factor in the discussion.",
+        "It is mentioned only in the conclusion.",
+        "It is presented as a counterargument."
+      ],
+      "answer": "It is described as a key factor in the discussion.",
+      "explanationCn": "根据文章内容，该因素被描述为讨论中的关键因素。"
+    },
+    {
+      "id": "q3",
+      "type": "inference",
+      "question": "What can be inferred from the last paragraph?",
+      "options": [
+        "The author is completely pessimistic about the future.",
+        "The author believes adaptability is important for progress.",
+        "The author thinks further research is unnecessary.",
+        "The author rejects all previous findings."
+      ],
+      "answer": "The author believes adaptability is important for progress.",
+      "explanationCn": "从最后一段可以推断，作者认为适应能力对进步很重要。"
+    }
+  ],
+  "cloze": [
+    {
+      "id": "c1",
+      "sentence": "In today's rapidly changing world, the concept of ____ has become increasingly important.",
+      "answer": "acquire",
+      "hintCn": "获得"
+    },
+    {
+      "id": "c2",
+      "sentence": "Many researchers have begun to ____ new approaches to understand how these changes affect our daily lives.",
+      "answer": "assume",
+      "hintCn": "假设"
+    },
+    {
+      "id": "c3",
+      "sentence": "The evidence suggests that we need to ____ more attention to this growing phenomenon.",
+      "answer": "abandon",
+      "hintCn": "放弃"
+    },
+    {
+      "id": "c4",
+      "sentence": "Experts in the field argue that ____ is one of the key factors driving this transformation.",
+      "answer": "accurate",
+      "hintCn": "精确的"
+    },
+    {
+      "id": "c5",
+      "sentence": "When we ____ the current situation carefully, we can see that the impact extends far beyond what most people realize.",
+      "answer": "acknowledge",
+      "hintCn": "承认"
+    },
+    {
+      "id": "c6",
+      "sentence": "It is ____ that this trend will continue to shape our future.",
+      "answer": "adapt",
+      "hintCn": "适应"
+    },
+    {
+      "id": "c7",
+      "sentence": "Some scholars take a more cautious approach, suggesting that we should not ____ too quickly to conclusions.",
+      "answer": "accelerate",
+      "hintCn": "加速"
+    },
+    {
+      "id": "c8",
+      "sentence": "They believe that a ____ understanding of the underlying principles is necessary before we can make meaningful progress.",
+      "answer": "advocate",
+      "hintCn": "提倡"
+    },
+    {
+      "id": "c9",
+      "sentence": "The ____ of their research points to a more nuanced view of the issue.",
+      "answer": "abstract",
+      "hintCn": "抽象的"
+    },
+    {
+      "id": "c10",
+      "sentence": "In ____, the journey toward understanding these complex issues requires both patience and dedication.",
+      "answer": "appropriate",
+      "hintCn": "适当的"
+    }
+  ],
+  "createdAt": "2026-05-20T06:26:42.597Z"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "cet4",
+  "name": "大学英语四级",
+  "cefr": "B1",
+  "articleWordCount": { "min": 350, "max": 450 },
+  "targetWordCount": { "min": 8, "max": 10 },
+  "paragraphCount": { "min": 4, "max": 6 },
+  "sentenceLength": "medium",
+  "grammarComplexity": "medium",
+  "allowedQuestionTypes": ["main_idea", "detail", "inference", "vocabulary_in_context"],
+  "style": "academic and practical",
+  "difficultyNotes": [
+    "Use academic vocabulary with some complexity.",
+    "Include both factual and inference questions.",
+    "Balance concrete and abstract topics."
+  ]
+}

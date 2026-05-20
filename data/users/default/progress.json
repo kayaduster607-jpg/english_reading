@@ -1,0 +1,105 @@
+{
+  "userId": "default",
+  "words": {
+    "acquire": {
+      "word": "acquire",
+      "status": "learning",
+      "familiarity": 1,
+      "seenCount": 1,
+      "correctCount": 1,
+      "wrongCount": 0,
+      "lastSeenAt": "2026-05-20T06:34:26.801Z",
+      "nextReviewAt": "2026-05-23T06:34:26.804Z"
+    },
+    "assume": {
+      "word": "assume",
+      "status": "learning",
+      "familiarity": 1,
+      "seenCount": 1,
+      "correctCount": 1,
+      "wrongCount": 0,
+      "lastSeenAt": "2026-05-20T06:34:26.801Z",
+      "nextReviewAt": "2026-05-23T06:34:26.808Z"
+    },
+    "abandon": {
+      "word": "abandon",
+      "status": "learning",
+      "familiarity": 1,
+      "seenCount": 1,
+      "correctCount": 1,
+      "wrongCount": 0,
+      "lastSeenAt": "2026-05-20T06:34:26.801Z",
+      "nextReviewAt": "2026-05-23T06:34:26.809Z"
+    },
+    "accurate": {
+      "word": "accurate",
+      "status": "weak",
+      "familiarity": 1,
+      "seenCount": 1,
+      "correctCount": 1,
+      "wrongCount": 0,
+      "lastSeenAt": "2026-05-20T06:34:26.801Z",
+      "nextReviewAt": "2026-05-21T06:34:26.810Z"
+    },
+    "acknowledge": {
+      "word": "acknowledge",
+      "status": "learning",
+      "familiarity": 1,
+      "seenCount": 1,
+      "correctCount": 1,
+      "wrongCount": 0,
+      "lastSeenAt": "2026-05-20T06:34:26.801Z",
+      "nextReviewAt": "2026-05-23T06:34:26.811Z"
+    },
+    "adapt": {
+      "word": "adapt",
+      "status": "learning",
+      "familiarity": 1,
+      "seenCount": 1,
+      "correctCount": 1,
+      "wrongCount": 0,
+      "lastSeenAt": "2026-05-20T06:34:26.801Z",
+      "nextReviewAt": "2026-05-23T06:34:26.812Z"
+    },
+    "accelerate": {
+      "word": "accelerate",
+      "status": "learning",
+      "familiarity": 1,
+      "seenCount": 1,
+      "correctCount": 1,
+      "wrongCount": 0,
+      "lastSeenAt": "2026-05-20T06:34:26.801Z",
+      "nextReviewAt": "2026-05-23T06:34:26.813Z"
+    },
+    "advocate": {
+      "word": "advocate",
+      "status": "learning",
+      "familiarity": 1,
+      "seenCount": 1,
+      "correctCount": 1,
+      "wrongCount": 0,
+      "lastSeenAt": "2026-05-20T06:34:26.801Z",
+      "nextReviewAt": "2026-05-23T06:34:26.814Z"
+    },
+    "abstract": {
+      "word": "abstract",
+      "status": "learning",
+      "familiarity": 1,
+      "seenCount": 1,
+      "correctCount": 1,
+      "wrongCount": 0,
+      "lastSeenAt": "2026-05-20T06:34:26.801Z",
+      "nextReviewAt": "2026-05-23T06:34:26.814Z"
+    },
+    "appropriate": {
+      "word": "appropriate",
+      "status": "learning",
+      "familiarity": 1,
+      "seenCount": 1,
+      "correctCount": 1,
+      "wrongCount": 0,
+      "lastSeenAt": "2026-05-20T06:34:26.801Z",
+      "nextReviewAt": "2026-05-23T06:34:26.815Z"
+    }
+  }
+}
