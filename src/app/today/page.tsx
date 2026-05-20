@@ -6,6 +6,7 @@ import { HighlightedText } from '@/components/reading/HighlightedText';
 import { TargetWordPanel } from '@/components/reading/TargetWordPanel';
 import { ComprehensionQuestions } from '@/components/reading/ComprehensionQuestions';
 import { ClozeExercise } from '@/components/reading/ClozeExercise';
+import { GenerationProgress } from '@/components/reading/GenerationProgress';
 
 export default function TodayPage() {
   const [reading, setReading] = useState<GeneratedReading | null>(null);
@@ -17,7 +18,9 @@ export default function TodayPage() {
   const [selectedBookIds, setSelectedBookIds] = useState<string[]>([]);
   const [questionSubmitted, setQuestionSubmitted] = useState(false);
   const [clozeSubmitted, setClozeSubmitted] = useState(false);
-  const [targetWordCount, setTargetWordCount] = useState(10);
+  const [targetWordCount, setTargetWordCount] = useState(14);
+  const [generationPercent, setGenerationPercent] = useState(0);
+  const [generationMessage, setGenerationMessage] = useState('');
 
   useEffect(() => {
     fetch('/api/readings/today').then((r) => r.json()).then((d) => {
@@ -37,22 +40,54 @@ export default function TodayPage() {
     if (selectedBookIds.length === 0) { alert('请至少选择一本词书'); return; }
 
     setGenerating(true);
+    setGenerationPercent(5);
+    setGenerationMessage('正在准备生成任务...');
+
     try {
-      const res = await fetch('/api/readings/generate', {
+      const res = await fetch('/api/readings/generate-stream', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: topic || undefined, vocabBookIds: selectedBookIds, targetWordCount, force }),
+        body: JSON.stringify({ topic: topic.trim() || undefined, vocabBookIds: selectedBookIds, targetWordCount, force }),
       });
-      const data = await res.json();
-      if (data.reading) {
-        setReading(data.reading);
-        setQuestionSubmitted(false);
-        setClozeSubmitted(false);
-      } else {
-        alert(data.error || '生成失败');
+
+      if (!res.body) throw new Error('浏览器不支持流式响应');
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const chunks = buffer.split('\n\n');
+        buffer = chunks.pop() || '';
+
+        for (const chunk of chunks) {
+          const line = chunk.split('\n').find((item) => item.startsWith('data: '));
+          if (!line) continue;
+
+          const event = JSON.parse(line.replace(/^data:\s*/, ''));
+
+          if (typeof event.percent === 'number') setGenerationPercent(event.percent);
+          if (event.message) setGenerationMessage(event.message);
+
+          if (event.type === 'done' && event.reading) {
+            setReading(event.reading);
+            setQuestionSubmitted(false);
+            setClozeSubmitted(false);
+            setGenerationPercent(100);
+            setGenerationMessage('生成完成');
+          }
+
+          if (event.type === 'error') {
+            throw new Error(event.message || '生成失败');
+          }
+        }
       }
-    } catch {
-      alert('生成失败，请重试');
+    } catch (error) {
+      alert(error instanceof Error ? error.message : '生成失败，请重试');
     } finally {
       setGenerating(false);
     }
@@ -81,6 +116,10 @@ export default function TodayPage() {
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         <h2 className="text-2xl font-bold mb-4">今日阅读</h2>
         <p className="text-gray-500 mb-6">选择词书和主题，生成今日阅读</p>
+
+        {generating && (
+          <GenerationProgress percent={generationPercent} message={generationMessage} />
+        )}
 
         {/* Vocab Book Selection */}
         {books.length > 0 && (

@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Allow reading from data/ directory
-  serverExternalPackages: [],
+  serverExternalPackages: ['pdf-parse', '@napi-rs/canvas'],
 };
 
 export default nextConfig;

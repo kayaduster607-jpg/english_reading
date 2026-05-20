@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { VocabBookRepository } from '@/server/repositories/vocab-book.repository';
 import { getParser } from '@/server/parsers/parser-factory';
 
+export const runtime = 'nodejs';
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -13,13 +15,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
 
-    const content = await file.text();
+    const buffer = Buffer.from(await file.arrayBuffer());
     const parser = getParser(file.name);
-    const items = parser.parse(content, file.name);
+    const result = await parser.parse({ fileName: file.name, buffer, contentType: file.type });
 
-    if (items.length === 0) {
+    if (result.items.length === 0) {
       return NextResponse.json(
-        { error: 'No valid vocabulary items found in file' },
+        { error: 'No valid vocabulary items found in file', warnings: result.warnings },
         { status: 400 }
       );
     }
@@ -28,10 +30,10 @@ export async function POST(request: Request) {
     const book = await repo.createUploadedBook({
       name: bookName || file.name.replace(/\.[^.]+$/, ''),
       examTarget,
-      items,
+      items: result.items,
     });
 
-    return NextResponse.json({ book, wordCount: items.length });
+    return NextResponse.json({ book, wordCount: result.items.length });
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Unknown error' },

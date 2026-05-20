@@ -2,16 +2,24 @@ import type { VocabItem } from '@/shared/types';
 import { parseTxt } from './txt-parser';
 import { parseCsv } from './csv-parser';
 
+export type PdfParseMode = 'auto' | 'inline-numbered' | 'momo-table' | 'ai-assisted';
+
 export interface VocabParserInput {
   fileName: string;
   buffer: Buffer;
   contentType?: string;
+  mode?: PdfParseMode | string;
 }
 
 export interface VocabParseResult {
   items: VocabItem[];
   warnings: string[];
   rawTextPreview?: string;
+  parserReport?: {
+    strategyStats?: Record<string, number>;
+    estimatedEntryCount?: number;
+    qualityScore?: number;
+  };
 }
 
 export interface VocabParser {

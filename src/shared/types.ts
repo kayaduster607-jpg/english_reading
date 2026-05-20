@@ -73,10 +73,13 @@ export interface WordProgress {
   status: WordStatus;
   familiarity: number;
   seenCount: number;
+  practiceCount: number;
   correctCount: number;
   wrongCount: number;
+  firstSeenAt?: string;
   lastSeenAt: string | null;
   nextReviewAt: string | null;
+  lastReadingId?: string;
 }
 
 export interface ProgressData {

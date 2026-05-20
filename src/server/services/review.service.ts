@@ -10,15 +10,7 @@ export class ReviewService {
     const now = new Date().toISOString();
     const updates: Array<{
       word: string;
-      update: {
-        status: WordStatus;
-        familiarity: number;
-        seenCount: number;
-        correctCount: number;
-        wrongCount: number;
-        lastSeenAt: string;
-        nextReviewAt: string;
-      };
+      update: Partial<import('@/shared/types').WordProgress>;
     }> = [];
 
     const logEntries: ReviewLogEntry[] = [];
@@ -28,15 +20,12 @@ export class ReviewService {
       const existing = progress.words[result.word];
 
       const currentFamiliarity = existing?.familiarity ?? 0;
-      const currentSeen = existing?.seenCount ?? 0;
       const currentCorrect = existing?.correctCount ?? 0;
       const currentWrong = existing?.wrongCount ?? 0;
+      const currentPractice = existing?.practiceCount ?? 0;
 
       const isCorrect = result.questionCorrect;
-      const newFamiliarity = Math.max(
-        0,
-        Math.min(5, currentFamiliarity + (isCorrect ? 1 : -1))
-      );
+      const newFamiliarity = Math.max(0, Math.min(5, currentFamiliarity + (isCorrect ? 1 : -1)));
 
       const newStatus = this.calculateStatus(
         newFamiliarity,
@@ -51,10 +40,9 @@ export class ReviewService {
         update: {
           status: newStatus,
           familiarity: newFamiliarity,
-          seenCount: currentSeen + 1,
+          practiceCount: currentPractice + 1,
           correctCount: currentCorrect + (isCorrect ? 1 : 0),
           wrongCount: currentWrong + (isCorrect ? 0 : 1),
-          lastSeenAt: now,
           nextReviewAt,
         },
       });
@@ -93,20 +81,11 @@ export class ReviewService {
     let days: number;
 
     switch (status) {
-      case 'mastered':
-        days = 14;
-        break;
-      case 'familiar':
-        days = 7;
-        break;
-      case 'learning':
-        days = 3;
-        break;
-      case 'weak':
-        days = 1;
-        break;
-      default:
-        days = 2;
+      case 'mastered': days = 14; break;
+      case 'familiar': days = 7; break;
+      case 'learning': days = 3; break;
+      case 'weak': days = 1; break;
+      default: days = 2;
     }
 
     now.setDate(now.getDate() + days);

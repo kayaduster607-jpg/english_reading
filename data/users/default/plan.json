@@ -2,10 +2,11 @@
   "userId": "default",
   "examTarget": "cet6",
   "activeVocabBookIds": [
-    "book_mpdqdnt6"
+    "book_mpdqdnt6",
+    "book_mpdtoiko"
   ],
-  "dailyNewWords": 100,
-  "dailyReviewWords": 100,
+  "dailyNewWords": 20,
+  "dailyReviewWords": 0,
   "readingTargetWordCount": 18,
   "articlePerDay": 1,
   "preferredTopics": [
