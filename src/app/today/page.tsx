@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import type { GeneratedReading, ReviewResultItem } from '@/shared/types';
+import type { GeneratedReading, ReviewResultItem, VocabBook, UserPlan } from '@/shared/types';
 import { HighlightedText } from '@/components/reading/HighlightedText';
 import { TargetWordPanel } from '@/components/reading/TargetWordPanel';
 import { ComprehensionQuestions } from '@/components/reading/ComprehensionQuestions';
@@ -13,29 +13,41 @@ export default function TodayPage() {
   const [generating, setGenerating] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [topic, setTopic] = useState('');
+  const [books, setBooks] = useState<VocabBook[]>([]);
+  const [selectedBookIds, setSelectedBookIds] = useState<string[]>([]);
+  const [questionSubmitted, setQuestionSubmitted] = useState(false);
+  const [clozeSubmitted, setClozeSubmitted] = useState(false);
+  const [targetWordCount, setTargetWordCount] = useState(10);
 
   useEffect(() => {
-    fetch('/api/readings/today')
-      .then((r) => r.json())
-      .then((d) => {
-        setReading(d.reading);
-        setLoading(false);
-      });
+    fetch('/api/readings/today').then((r) => r.json()).then((d) => {
+      setReading(d.reading);
+      setLoading(false);
+    });
+    fetch('/api/vocab/books').then((r) => r.json()).then((d) => setBooks(d.books || []));
+    fetch('/api/user/plan').then((r) => r.json()).then((d) => {
+      const plan = d.plan as UserPlan;
+      setSelectedBookIds(plan.activeVocabBookIds || []);
+      setTargetWordCount(plan.readingTargetWordCount || 14);
+    });
   }, []);
 
   const handleGenerate = async (force = false) => {
     if (force && !confirm('确定要重新生成吗？当前文章将被覆盖。')) return;
+    if (selectedBookIds.length === 0) { alert('请至少选择一本词书'); return; }
 
     setGenerating(true);
     try {
       const res = await fetch('/api/readings/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: topic || undefined, force }),
+        body: JSON.stringify({ topic: topic || undefined, vocabBookIds: selectedBookIds, targetWordCount, force }),
       });
       const data = await res.json();
       if (data.reading) {
         setReading(data.reading);
+        setQuestionSubmitted(false);
+        setClozeSubmitted(false);
       } else {
         alert(data.error || '生成失败');
       }
@@ -61,19 +73,45 @@ export default function TodayPage() {
   }, [reading]);
 
   if (loading) {
-    return (
-      <div className="max-w-6xl mx-auto px-4 py-20 text-center text-gray-400">
-        加载中...
-      </div>
-    );
+    return <div className="max-w-6xl mx-auto px-4 py-20 text-center text-gray-400">加载中...</div>;
   }
 
   if (!reading) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         <h2 className="text-2xl font-bold mb-4">今日阅读</h2>
-        <p className="text-gray-500 mb-6">今天还没有生成阅读文章</p>
-        <div className="mb-6">
+        <p className="text-gray-500 mb-6">选择词书和主题，生成今日阅读</p>
+
+        {/* Vocab Book Selection */}
+        {books.length > 0 && (
+          <div className="mb-6 text-left">
+            <p className="text-sm font-medium mb-3">选择本次生成使用的词书</p>
+            <div className="space-y-2">
+              {books.map((book) => {
+                const checked = selectedBookIds.includes(book.id);
+                return (
+                  <label key={book.id} className="flex items-center justify-between rounded-lg border border-gray-200 px-3 py-2 text-sm">
+                    <span>
+                      <span className="font-medium">{book.name}</span>
+                      <span className="ml-2 text-xs text-gray-400">{book.wordCount} words</span>
+                    </span>
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={(e) => {
+                        setSelectedBookIds((prev) =>
+                          e.target.checked ? [...prev, book.id] : prev.filter((id) => id !== book.id)
+                        );
+                      }}
+                    />
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        <div className="mb-6 space-y-4">
           <input
             type="text"
             value={topic}
@@ -81,6 +119,20 @@ export default function TodayPage() {
             placeholder="输入文章主题（可选，如 technology, campus life）"
             className="w-full max-w-md px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] outline-none"
           />
+          <div className="max-w-md">
+            <label className="block text-sm text-gray-500 mb-1">本篇目标词数量</label>
+            <input
+              type="number"
+              min={3}
+              max={30}
+              value={targetWordCount}
+              onChange={(e) => setTargetWordCount(Number(e.target.value))}
+              className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:border-[var(--color-primary)] outline-none"
+            />
+            <p className="text-xs text-gray-400 mt-1">
+              今日学习词量可以很大，但一篇阅读建议只嵌入 8-24 个目标词
+            </p>
+          </div>
         </div>
         <button
           onClick={() => handleGenerate(false)}
@@ -101,9 +153,7 @@ export default function TodayPage() {
           <div>
             <h1 className="text-3xl font-bold mb-2">{reading.title}</h1>
             <div className="flex items-center gap-3 text-sm text-gray-500">
-              <span className="px-2 py-0.5 bg-green-50 text-[var(--color-primary)] rounded font-medium">
-                {reading.examTarget.toUpperCase()}
-              </span>
+              <span className="px-2 py-0.5 bg-green-50 text-[var(--color-primary)] rounded font-medium">{reading.examTarget.toUpperCase()}</span>
               <span>{reading.cefr}</span>
               <span>{reading.wordCount} words</span>
               <span>{reading.date}</span>
@@ -126,52 +176,61 @@ export default function TodayPage() {
 
       {/* Main Content: Two Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-        {/* Left: Article */}
         <div className="lg:col-span-2">
           <div className="bg-white rounded-xl border border-gray-200 p-8">
             <div className="reading-body space-y-5">
               {reading.paragraphs.map((p, i) => (
                 <p key={i}>
-                  <HighlightedText
-                    text={p}
-                    words={reading.targetWords.map((w) => w.word)}
-                  />
+                  <HighlightedText text={p} words={reading.targetWords.map((w) => w.word)} />
                 </p>
               ))}
             </div>
           </div>
         </div>
-
-        {/* Right: Target Words Panel */}
         <div className="lg:col-span-1">
           <div className="sticky top-20">
-            <TargetWordPanel
-              words={reading.targetWords}
-              vocabularyInContext={reading.vocabularyInContext}
-            />
+            <TargetWordPanel words={reading.targetWords} vocabularyInContext={reading.vocabularyInContext} />
           </div>
         </div>
       </div>
 
       {/* Questions */}
       <div className="space-y-8 mb-12">
-        <ComprehensionQuestions questions={reading.questions} />
-        <ClozeExercise questions={reading.cloze} />
+        <ComprehensionQuestions questions={reading.questions} onSubmitted={() => setQuestionSubmitted(true)} />
+        <ClozeExercise questions={reading.cloze} onSubmitted={() => setClozeSubmitted(true)} />
       </div>
+
+      {/* Full Translation */}
+      {questionSubmitted && clozeSubmitted && reading.translationCn && reading.translationCn.length > 0 && (
+        <FullTranslation paragraphs={reading.paragraphs} translationCn={reading.translationCn} />
+      )}
 
       {/* Submit Review */}
       {!submitted ? (
         <ReviewSubmitSection reading={reading} onSubmit={handleReviewSubmit} />
       ) : (
         <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
-          <p className="text-lg font-semibold text-[var(--color-primary)]">
-            复习结果已提交
-          </p>
-          <p className="text-sm text-gray-500 mt-2">
-            系统已更新你的词汇掌握状态
-          </p>
+          <p className="text-lg font-semibold text-[var(--color-primary)]">复习结果已提交</p>
+          <p className="text-sm text-gray-500 mt-2">系统已更新你的词汇掌握状态</p>
         </div>
       )}
+    </div>
+  );
+}
+
+function FullTranslation({ paragraphs, translationCn }: { paragraphs: string[]; translationCn: string[] }) {
+  return (
+    <div className="bg-white rounded-xl border border-gray-200 p-6 mb-12">
+      <h3 className="text-lg font-semibold mb-6">全文翻译</h3>
+      <div className="space-y-6">
+        {paragraphs.map((paragraph, index) => (
+          <div key={index} className="border-b border-gray-100 pb-5 last:border-0 last:pb-0">
+            <p className="text-sm text-gray-400 mb-2">Paragraph {index + 1}</p>
+            <p className="font-[var(--font-serif)] text-gray-700 mb-3 leading-7">{paragraph}</p>
+            <p className="text-gray-800 leading-7">{translationCn[index]}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -209,13 +268,10 @@ function ReviewSubmitSection({
                   onClick={() => setStatus(w.word, status)}
                   className={`px-3 py-1 text-xs rounded-full border transition-colors ${
                     results[w.word]?.status === status
-                      ? status === 'unknown'
-                        ? 'bg-red-100 border-red-300 text-red-700'
-                        : status === 'vague'
-                          ? 'bg-yellow-100 border-yellow-300 text-yellow-700'
-                          : status === 'familiar'
-                            ? 'bg-blue-100 border-blue-300 text-blue-700'
-                            : 'bg-green-100 border-green-300 text-green-700'
+                      ? status === 'unknown' ? 'bg-red-100 border-red-300 text-red-700'
+                        : status === 'vague' ? 'bg-yellow-100 border-yellow-300 text-yellow-700'
+                        : status === 'familiar' ? 'bg-blue-100 border-blue-300 text-blue-700'
+                        : 'bg-green-100 border-green-300 text-green-700'
                       : 'border-gray-200 text-gray-400 hover:border-gray-300'
                   }`}
                 >

@@ -128,6 +128,7 @@ export interface GeneratedReading {
   targetWords: ReadingTargetWord[];
   guideCn: string;
   paragraphs: string[];
+  translationCn: string[];
   vocabularyInContext: VocabularyInContext[];
   questions: ReadingQuestion[];
   cloze: ClozeQuestion[];
@@ -150,6 +151,9 @@ export interface UserPlan {
   activeVocabBookIds: string[];
   dailyNewWords: number;
   dailyReviewWords: number;
+  readingTargetWordCount: number;
+  /** @deprecated Use readingTargetWordCount instead */
+  dailyTargetWords?: number;
   articlePerDay: number;
   preferredTopics: string[];
   generationStyle: GenerationStyle;
@@ -198,6 +202,7 @@ export interface AIReadingOutput {
   title: string;
   guideCn: string;
   paragraphs: string[];
+  translationCn: string[];
   vocabularyInContext: VocabularyInContext[];
   questions: ReadingQuestion[];
   cloze: ClozeQuestion[];

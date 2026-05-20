@@ -15,11 +15,17 @@ export class ReadingValidationService {
   private validateWordCount(output: AIReadingOutput, exam: ExamProfile): void {
     const wordCount = countParagraphWords(output.paragraphs);
     const { min, max } = exam.articleWordCount;
-    // Allow 10% tolerance
-    const tolerance = 0.1;
-    if (wordCount < min * (1 - tolerance) || wordCount > max * (1 + tolerance)) {
-      console.warn(
-        `Word count ${wordCount} outside range ${min}-${max} (with tolerance). Proceeding anyway.`
+    const minAllowed = Math.floor(min * 0.95);
+    const maxAllowed = Math.ceil(max * 1.15);
+
+    if (wordCount < minAllowed) {
+      throw new Error(
+        `Generated article is too short: ${wordCount} words. Expected at least ${minAllowed} words for ${exam.name}.`
+      );
+    }
+    if (wordCount > maxAllowed) {
+      throw new Error(
+        `Generated article is too long: ${wordCount} words. Expected no more than ${maxAllowed} words for ${exam.name}.`
       );
     }
   }

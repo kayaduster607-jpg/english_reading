@@ -4,235 +4,372 @@
   "userId": "default",
   "examTarget": "cet6",
   "cefr": "B2",
-  "topic": "technology and daily life",
-  "title": "Exploring the World of technology and daily life",
-  "wordCount": 187,
+  "topic": "The Paradox of Materialism and Experiential Happiness",
+  "title": "Why Buying Experiences Brings More Cheerfulness Than Possessions",
+  "wordCount": 440,
   "sourceVocabBookIds": [
-    "cet6-core"
+    "book_mpdqdnt6"
   ],
   "targetWords": [
     {
-      "word": "acquire",
-      "meaningCn": "获得；学到",
-      "pos": "v."
+      "word": "buy",
+      "meaningCn": "vt. 购买；买得起；获得；贿赂；相信n. 购买；所购的物品；合算的东西n. （Buy）（法）比伊（人名）"
     },
     {
-      "word": "assume",
-      "meaningCn": "假设；承担",
-      "pos": "v."
+      "word": "cheerful",
+      "meaningCn": "adj. 快乐的；愉快的；高兴的"
     },
     {
-      "word": "abandon",
-      "meaningCn": "放弃；抛弃",
-      "pos": "v."
+      "word": "bush",
+      "meaningCn": "n. 灌木；矮树丛vt. 以灌木装饰；使…精疲力竭vi. 丛生；浓密地生长adj. 如灌木般长得低矮的；粗野的"
     },
     {
-      "word": "accurate",
-      "meaningCn": "精确的；准确的",
-      "pos": "adj."
+      "word": "facilitate",
+      "meaningCn": "vt. 促进；帮助；使容易"
     },
     {
-      "word": "acknowledge",
-      "meaningCn": "承认；认可",
-      "pos": "v."
+      "word": "accumulate",
+      "meaningCn": "vi. 累积；积聚vt. 积攒"
     },
     {
-      "word": "adapt",
-      "meaningCn": "适应；改编",
-      "pos": "v."
+      "word": "arouse",
+      "meaningCn": "vt. 引起；唤醒；鼓励vi. 激发；醒来；发奋"
     },
     {
-      "word": "accelerate",
-      "meaningCn": "加速；促进",
-      "pos": "v."
+      "word": "yacht",
+      "meaningCn": "n. 游艇，快艇；轻舟v. 乘游艇，驾游艇；驾帆船比赛n. (Yacht) （美、加、土、法、荷、俄）约特（人名）"
     },
     {
-      "word": "advocate",
-      "meaningCn": "提倡；倡导者",
-      "pos": "v./n."
+      "word": "oh",
+      "meaningCn": "int. 哦；哎呀（表示惊讶或恐惧等）"
     },
     {
-      "word": "abstract",
-      "meaningCn": "抽象的；摘要",
-      "pos": "adj./n."
+      "word": "decorate",
+      "meaningCn": "vt. 装饰；布置；授勋给vi. 装饰；布置"
     },
     {
-      "word": "appropriate",
-      "meaningCn": "适当的；合适的",
-      "pos": "adj."
+      "word": "draw",
+      "meaningCn": "vt. 画；拉；吸引vi. 拉；拖n. 平局；抽签n. （Draw）（英）德劳（人名）"
+    },
+    {
+      "word": "comb",
+      "meaningCn": "n. 梳子；蜂巢；鸡冠vt. 梳头发；梳毛vi. （浪）涌起"
+    },
+    {
+      "word": "predict",
+      "meaningCn": "v. 预言，预知，预卜；做预报；断言"
+    },
+    {
+      "word": "whenever",
+      "meaningCn": "conj. 无论何时，无论什么情况；每当；别的什么时候（也可以）adv. 不论何时，随便什么时候；究竟什么时候"
+    },
+    {
+      "word": "storage",
+      "meaningCn": "n. 存储；仓库；贮藏所"
+    },
+    {
+      "word": "dinner",
+      "meaningCn": "n. 晚餐，晚宴；宴会；正餐n. (Dinner)人名；(法)迪内"
+    },
+    {
+      "word": "barrier",
+      "meaningCn": "n. 障碍物，屏障；界线vt. 把……关入栅栏n. （Barrier）（法）巴里耶（人名）"
+    },
+    {
+      "word": "scale",
+      "meaningCn": "n.刻度,衡量,比例,数值范围,比例尺,天平,等级vt.依比例决定,攀登,测量vi.剥落,生水垢,重,攀登,衡量"
+    },
+    {
+      "word": "creative",
+      "meaningCn": "adj. 创造性的"
     }
   ],
-  "guideCn": "本文围绕\"technology and daily life\"展开，适合大学英语六级水平学习者。文章中自然嵌入了10个目标词汇，帮助你在语境中理解和记忆这些重要单词。",
+  "guideCn": "本文探讨了物质消费与体验消费对幸福感的不同影响，指出购买体验比购买物品更能带来持久的快乐。文章运用因果推理和对比论证，帮助考生熟悉抽象名词、复杂句式及推理题型，同时学习重要词汇在语境中的应用。",
   "paragraphs": [
-    "In today's rapidly changing world, the concept of acquire has become increasingly important. Many researchers have begun to assume new approaches to understand how these changes affect our daily lives. The evidence suggests that we need to abandon more attention to this growing phenomenon.",
-    "Experts in the field argue that accurate is one of the key factors driving this transformation. When we acknowledge the current situation carefully, we can see that the impact extends far beyond what most people realize. It is adapt that this trend will continue to shape our future.",
-    "Some scholars take a more cautious approach, suggesting that we should not accelerate too quickly to conclusions. They believe that a advocate understanding of the underlying principles is necessary before we can make meaningful progress. The abstract of their research points to a more nuanced view of the issue.",
-    "In appropriate, the journey toward understanding these complex issues requires both patience and dedication. As we continue to explore new possibilities, we must remain open to different perspectives and be willing to adapt our thinking accordingly. The future depends on our ability to learn and grow."
+    "The pursuit of happiness through material possessions has long been a central theme in consumer culture. Many individuals accumulate wealth with the specific goal of purchasing expensive items, such as a luxurious yacht or a spacious home. However, these acquisitions often fail to arouse lasting cheerfulness. Despite the initial excitement, the cheerful mood triggered by a new buy tends to fade quickly, a phenomenon known as hedonic adaptation. When we decorate our living spaces with costly art or gadgets, we may draw temporary satisfaction, but this rarely translates into enduring well-being. The very act of accumulating goods can become a barrier to genuine fulfillment, as the need for storage space grows and the cognitive load of managing possessions increases.",
+    "In contrast, experiential consumption—spending money on activities rather than objects—has been shown to facilitate deeper and more sustainable happiness. For instance, a hike through a dense bush or a shared dinner with close friends can arouse positive emotions and foster creative thinking. Such experiences allow individuals to comb through their memories, finding meaning and connection long after the event has passed. Whenever people allocate their resources toward travel or learning, they tend to predict higher levels of satisfaction accurately, and the joy derived often scales with the intensity of the experience. Unlike material goods, these moments do not clutter physical storage but enrich one's personal narrative.",
+    "Researchers have identified several psychological barriers that prevent material purchases from generating long-term cheerfulness. One key barrier is the tendency to compare one's possessions with others', which can undermine satisfaction. Oh, the irony is that owning a luxury car or a private yacht may invite envy rather than contentment. To facilitate better decision-making, psychologists advise consumers to comb through their motivations and assess the true value of a prospective buy. Creative interventions, such as reframing spending as an opportunity for growth, can help individuals overcome impulsive tendencies. On a broader scale, societies that emphasize experiential living report higher levels of overall well-being.",
+    "Predicting what will make us cheerful is notoriously challenging; people frequently overestimate the joy brought by material goods. A simple dinner with loved ones, however, often arouses a deeper sense of gratitude than any purchasable item. The barrier to such experiences is not financial but psychological—the misbelief that bigger and more expensive equals better. By recognizing that storage space is finite and that the lure of novelty draws us toward unnecessary buys, we can redirect our resources toward creative pursuits and meaningful interactions. The next time you feel the urge to buy something grand, remember that the scale of your happiness is not measured by possessions but by the richness of your experiences."
+  ],
+  "translationCn": [
+    "物质追求幸福感一直是消费文化中的核心主题。许多人积累财富，专门为了购买昂贵的物品，比如一艘豪华游艇或一套宽敞的住宅。然而，这些获得往往不能唤起持久的快乐。尽管最初兴奋，新购物品引发的愉悦情绪往往会迅速消退，这一现象被称为享乐适应。当我们用昂贵的艺术品或小玩意装饰生活空间时，我们可能获得暂时的满足感，但这很少转化为持久的幸福。积累物品的行为本身可能成为真正满足的障碍，因为对存储空间的需求增加，管理财产带来的认知负担也不断加重。",
+    "相比之下，体验式消费——将钱花在活动上而非物品上——已被证明能促进更深刻、更可持续的幸福。例如，在茂密的灌木丛中徒步旅行，或与亲密的朋友共进晚餐，都能唤起积极情绪并培养创造性思维。这些体验让人们能够梳理自己的记忆，在事件过去很久后仍能找到意义和联系。每当人们将资源分配到旅行或学习上时，他们往往能准确预测更高的满意度，而所获得的快乐往往与体验的强度成正比。与物质商品不同，这些时刻不会占据物理存储空间，而是丰富个人的生命叙事。",
+    "研究人员已识别出一些阻碍物质消费产生长期愉悦的心理障碍。一个关键的障碍是比较倾向，即把自己的财富与他人比较，这会削弱满足感。哦，讽刺的是，拥有一辆豪华轿车或私人游艇可能招致的是嫉妒而非满足。为了促进更好的决策，心理学家建议消费者仔细梳理自己的动机，并评估预期购买的真正价值。创造性的干预措施，如将消费重新定义为成长的机会，可以帮助个体克服冲动倾向。在更广泛的规模上看，强调体验式生活的社会报告了更高水平的整体幸福感。",
+    "预测什么会使我们快乐是出了名的困难；人们常常高估物质商品带来的喜悦。然而，与家人共享一顿简单的晚餐，往往比任何可购买的物品都能唤起更深的感恩之情。获得这种体验的障碍并非金钱，而是心理上的——即认为更大更贵就等于更好的错误观念。认识到存储空间是有限的，新奇物品的诱惑会吸引我们进行不必要的购买，我们就可以将资源重新导向创造性的追求和有意义的互动。下次你感到想要购买某件昂贵物品的冲动时，请记住，你幸福的尺度不是由拥有的物品衡量，而是由经历的丰富程度决定。"
   ],
   "vocabularyInContext": [
     {
-      "word": "acquire",
-      "sentence": "In today's rapidly changing world, the concept of acquire has become increasingly important.",
-      "meaningCn": "获得；学到",
-      "noteCn": "注意 acquire 在文中的用法和搭配。"
+      "word": "buy",
+      "sentence": "Despite the initial excitement, the cheerful mood triggered by a new buy tends to fade quickly, a phenomenon known as hedonic adaptation.",
+      "meaningCn": "购买；所购之物",
+      "noteCn": "此处为名词用法，指购买的东西。在文中还有动词用法，如'to buy something grand'。"
     },
     {
-      "word": "assume",
-      "sentence": "Many researchers have begun to assume new approaches to understand how these changes affect our daily lives.",
-      "meaningCn": "假设；承担",
-      "noteCn": "注意 assume 在文中的用法和搭配。"
+      "word": "cheerful",
+      "sentence": "Despite the initial excitement, the cheerful mood triggered by a new buy tends to fade quickly.",
+      "meaningCn": "快乐的，愉快的",
+      "noteCn": "形容词，常形容情绪或氛围。"
     },
     {
-      "word": "abandon",
-      "sentence": "The evidence suggests that we need to abandon more attention to this growing phenomenon.",
-      "meaningCn": "放弃；抛弃",
-      "noteCn": "注意 abandon 在文中的用法和搭配。"
+      "word": "bush",
+      "sentence": "For instance, a hike through a dense bush or a shared dinner with close friends can arouse positive emotions and foster creative thinking.",
+      "meaningCn": "灌木丛",
+      "noteCn": "在这里指野外灌木丛，可比喻自然体验。"
     },
     {
-      "word": "accurate",
-      "sentence": "Experts in the field argue that accurate is one of the key factors driving this transformation.",
-      "meaningCn": "精确的；准确的",
-      "noteCn": "注意 accurate 在文中的用法和搭配。"
+      "word": "facilitate",
+      "sentence": "In contrast, experiential consumption—spending money on activities rather than objects—has been shown to facilitate deeper and more sustainable happiness.",
+      "meaningCn": "促进，帮助",
+      "noteCn": "及物动词，常用于正式文体。"
     },
     {
-      "word": "acknowledge",
-      "sentence": "When we acknowledge the current situation carefully, we can see that the impact extends far beyond what most people realize.",
-      "meaningCn": "承认；认可",
-      "noteCn": "注意 acknowledge 在文中的用法和搭配。"
+      "word": "accumulate",
+      "sentence": "Many individuals accumulate wealth with the specific goal of purchasing expensive items, such as a luxurious yacht or a spacious home.",
+      "meaningCn": "积累，积聚",
+      "noteCn": "可作及物或不及物动词，常用于正式语境。"
     },
     {
-      "word": "adapt",
-      "sentence": "It is adapt that this trend will continue to shape our future.",
-      "meaningCn": "适应；改编",
-      "noteCn": "注意 adapt 在文中的用法和搭配。"
+      "word": "arouse",
+      "sentence": "However, these acquisitions often fail to arouse lasting cheerfulness.",
+      "meaningCn": "引起，唤起",
+      "noteCn": "及物动词，后可接抽象名词如情绪、兴趣。"
     },
     {
-      "word": "accelerate",
-      "sentence": "Some scholars take a more cautious approach, suggesting that we should not accelerate too quickly to conclusions.",
-      "meaningCn": "加速；促进",
-      "noteCn": "注意 accelerate 在文中的用法和搭配。"
+      "word": "yacht",
+      "sentence": "Many individuals accumulate wealth with the specific goal of purchasing expensive items, such as a luxurious yacht or a spacious home.",
+      "meaningCn": "游艇",
+      "noteCn": "奢侈品代表，常作物质消费的例子。"
     },
     {
-      "word": "advocate",
-      "sentence": "They believe that a advocate understanding of the underlying principles is necessary before we can make meaningful progress.",
-      "meaningCn": "提倡；倡导者",
-      "noteCn": "注意 advocate 在文中的用法和搭配。"
+      "word": "oh",
+      "sentence": "Oh, the irony is that owning a luxury car or a private yacht may invite envy rather than contentment.",
+      "meaningCn": "哦（表惊讶或感叹）",
+      "noteCn": "感叹词，用于强调语气，这里表达讽刺。"
     },
     {
-      "word": "abstract",
-      "sentence": "The abstract of their research points to a more nuanced view of the issue.",
-      "meaningCn": "抽象的；摘要",
-      "noteCn": "注意 abstract 在文中的用法和搭配。"
+      "word": "decorate",
+      "sentence": "When we decorate our living spaces with costly art or gadgets, we may draw temporary satisfaction, but this rarely translates into enduring well-being.",
+      "meaningCn": "装饰，布置",
+      "noteCn": "及物动词，搭配空间或物体。"
     },
     {
-      "word": "appropriate",
-      "sentence": "In appropriate, the journey toward understanding these complex issues requires both patience and dedication.",
-      "meaningCn": "适当的；合适的",
-      "noteCn": "注意 appropriate 在文中的用法和搭配。"
+      "word": "draw",
+      "sentence": "When we decorate our living spaces with costly art or gadgets, we may draw temporary satisfaction, but this rarely translates into enduring well-being.",
+      "meaningCn": "获得，吸引",
+      "noteCn": "动词，此处意为“获得”，引申为吸引。"
+    },
+    {
+      "word": "comb",
+      "sentence": "Such experiences allow individuals to comb through their memories, finding meaning and connection long after the event has passed.",
+      "meaningCn": "梳理，仔细搜索",
+      "noteCn": "比喻用法，意为仔细检查或回顾。"
+    },
+    {
+      "word": "predict",
+      "sentence": "Whenever people allocate their resources toward travel or learning, they tend to predict higher levels of satisfaction accurately, and the joy derived often scales with the intensity of the experience.",
+      "meaningCn": "预测",
+      "noteCn": "及物动词，后接名词或从句。"
+    },
+    {
+      "word": "whenever",
+      "sentence": "Whenever people allocate their resources toward travel or learning, they tend to predict higher levels of satisfaction accurately.",
+      "meaningCn": "每当，无论何时",
+      "noteCn": "连词，引导时间或条件状语从句。"
+    },
+    {
+      "word": "storage",
+      "sentence": "The very act of accumulating goods can become a barrier to genuine fulfillment, as the need for storage space grows and the cognitive load of managing possessions increases.",
+      "meaningCn": "存储，贮藏",
+      "noteCn": "名词，可指存储空间或过程。"
+    },
+    {
+      "word": "dinner",
+      "sentence": "For instance, a hike through a dense bush or a shared dinner with close friends can arouse positive emotions and foster creative thinking.",
+      "meaningCn": "晚餐，正餐",
+      "noteCn": "名词，常指晚间正餐。"
+    },
+    {
+      "word": "barrier",
+      "sentence": "The very act of accumulating goods can become a barrier to genuine fulfillment, as the need for storage space grows and the cognitive load of managing possessions increases.",
+      "meaningCn": "障碍，屏障",
+      "noteCn": "名词，常用于抽象或具体事物。"
+    },
+    {
+      "word": "scale",
+      "sentence": "On a broader scale, societies that emphasize experiential living report higher levels of overall well-being.",
+      "meaningCn": "规模，范围",
+      "noteCn": "名词，也可作动词表“攀登”或“调整”，此处为名词。"
+    },
+    {
+      "word": "creative",
+      "sentence": "For instance, a hike through a dense bush or a shared dinner with close friends can arouse positive emotions and foster creative thinking.",
+      "meaningCn": "创造性的",
+      "noteCn": "形容词，常修饰思维、解决方案等。"
     }
   ],
   "questions": [
     {
       "id": "q1",
       "type": "main_idea",
-      "question": "What is the main idea of this passage?",
+      "question": "What is the main idea of the passage?",
       "options": [
-        "The passage discusses how acquire affects modern society.",
-        "The passage argues that technology has no impact on daily life.",
-        "The passage is mainly about the history of science.",
-        "The passage focuses on a single scientific discovery."
+        "A. Material possessions are the most reliable source of lasting happiness.",
+        "B. Experiential consumption generally leads to deeper and more enduring happiness than material purchases.",
+        "C. Storing possessions effectively can increase cheerfulness in daily life.",
+        "D. Psychological barriers prevent people from enjoying any form of consumption."
       ],
-      "answer": "The passage discusses how acquire affects modern society.",
-      "explanationCn": "文章主要讨论了主题对现代社会的影响，涵盖了多个角度的分析。"
+      "answer": "B. Experiential consumption generally leads to deeper and more enduring happiness than material purchases.",
+      "explanationCn": "文章通篇对比物质消费和体验消费，指出体验消费更促进幸福，因此B正确。"
     },
     {
       "id": "q2",
       "type": "detail",
-      "question": "According to the passage, what role does \"assume\" play?",
+      "question": "According to the passage, which of the following is a psychological barrier that undermines satisfaction with material purchases?",
       "options": [
-        "It is considered irrelevant to the main argument.",
-        "It is described as a key factor in the discussion.",
-        "It is mentioned only in the conclusion.",
-        "It is presented as a counterargument."
+        "A. The lack of storage space for new goods.",
+        "B. The tendency to compare one's possessions with those of others.",
+        "C. The difficulty of predicting future happiness levels.",
+        "D. The high cost of luxury items like yachts."
       ],
-      "answer": "It is described as a key factor in the discussion.",
-      "explanationCn": "根据文章内容，该因素被描述为讨论中的关键因素。"
+      "answer": "B. The tendency to compare one's possessions with those of others.",
+      "explanationCn": "第三段明确提到“One key barrier is the tendency to compare one's possessions with others'”，因此B正确。"
     },
     {
       "id": "q3",
       "type": "inference",
-      "question": "What can be inferred from the last paragraph?",
+      "question": "What can be inferred from the statement that experiences “allow individuals to comb through their memories, finding meaning and connection long after the event has passed”?",
       "options": [
-        "The author is completely pessimistic about the future.",
-        "The author believes adaptability is important for progress.",
-        "The author thinks further research is unnecessary.",
-        "The author rejects all previous findings."
+        "A. People often forget experiences more quickly than material purchases.",
+        "B. Experiences have no lasting impact on personal identity.",
+        "C. The value of experiential consumption lies in its enduring mental traces.",
+        "D. Material possessions are easier to recall than events."
       ],
-      "answer": "The author believes adaptability is important for progress.",
-      "explanationCn": "从最后一段可以推断，作者认为适应能力对进步很重要。"
+      "answer": "C. The value of experiential consumption lies in its enduring mental traces.",
+      "explanationCn": "推理出体验的价值在于持久的心理印记，能让人反复回味并找到意义，因此C正确。"
+    },
+    {
+      "id": "q4",
+      "type": "vocabulary_in_context",
+      "question": "In paragraph 3, the phrase “comb through” is closest in meaning to",
+      "options": [
+        "A. decorate",
+        "B. ignore",
+        "C. examine carefully",
+        "D. accumulate"
+      ],
+      "answer": "C. examine carefully",
+      "explanationCn": "“comb through motivations”意为仔细检查动机，C正确。"
     }
   ],
   "cloze": [
     {
       "id": "c1",
-      "sentence": "In today's rapidly changing world, the concept of ____ has become increasingly important.",
-      "answer": "acquire",
-      "hintCn": "获得"
+      "sentence": "Despite the initial excitement, the cheerful mood triggered by a new ____ tends to fade quickly.",
+      "answer": "buy",
+      "hintCn": "所购之物"
     },
     {
       "id": "c2",
-      "sentence": "Many researchers have begun to ____ new approaches to understand how these changes affect our daily lives.",
-      "answer": "assume",
-      "hintCn": "假设"
+      "sentence": "Despite the initial excitement, the ____ mood triggered by a new buy tends to fade quickly.",
+      "answer": "cheerful",
+      "hintCn": "快乐的"
     },
     {
       "id": "c3",
-      "sentence": "The evidence suggests that we need to ____ more attention to this growing phenomenon.",
-      "answer": "abandon",
-      "hintCn": "放弃"
+      "sentence": "For instance, a hike through a dense ____ or a shared dinner with close friends can arouse positive emotions.",
+      "answer": "bush",
+      "hintCn": "灌木丛"
     },
     {
       "id": "c4",
-      "sentence": "Experts in the field argue that ____ is one of the key factors driving this transformation.",
-      "answer": "accurate",
-      "hintCn": "精确的"
+      "sentence": "Experiential consumption has been shown to ____ deeper and more sustainable happiness.",
+      "answer": "facilitate",
+      "hintCn": "促进"
     },
     {
       "id": "c5",
-      "sentence": "When we ____ the current situation carefully, we can see that the impact extends far beyond what most people realize.",
-      "answer": "acknowledge",
-      "hintCn": "承认"
+      "sentence": "Many individuals ____ wealth with the specific goal of purchasing expensive items.",
+      "answer": "accumulate",
+      "hintCn": "积累"
     },
     {
       "id": "c6",
-      "sentence": "It is ____ that this trend will continue to shape our future.",
-      "answer": "adapt",
-      "hintCn": "适应"
+      "sentence": "These acquisitions often fail to ____ lasting cheerfulness.",
+      "answer": "arouse",
+      "hintCn": "引起"
     },
     {
       "id": "c7",
-      "sentence": "Some scholars take a more cautious approach, suggesting that we should not ____ too quickly to conclusions.",
-      "answer": "accelerate",
-      "hintCn": "加速"
+      "sentence": "Many individuals accumulate wealth with the specific goal of purchasing expensive items, such as a luxurious ____ or a spacious home.",
+      "answer": "yacht",
+      "hintCn": "游艇"
     },
     {
       "id": "c8",
-      "sentence": "They believe that a ____ understanding of the underlying principles is necessary before we can make meaningful progress.",
-      "answer": "advocate",
-      "hintCn": "提倡"
+      "sentence": "____, the irony is that owning a luxury car or a private yacht may invite envy rather than contentment.",
+      "answer": "Oh",
+      "hintCn": "哦（感叹词）"
     },
     {
       "id": "c9",
-      "sentence": "The ____ of their research points to a more nuanced view of the issue.",
-      "answer": "abstract",
-      "hintCn": "抽象的"
+      "sentence": "When we ____ our living spaces with costly art or gadgets, we may draw temporary satisfaction.",
+      "answer": "decorate",
+      "hintCn": "装饰"
     },
     {
       "id": "c10",
-      "sentence": "In ____, the journey toward understanding these complex issues requires both patience and dedication.",
-      "answer": "appropriate",
-      "hintCn": "适当的"
+      "sentence": "When we decorate our living spaces with costly art or gadgets, we may ____ temporary satisfaction.",
+      "answer": "draw",
+      "hintCn": "获得，吸引"
+    },
+    {
+      "id": "c11",
+      "sentence": "Such experiences allow individuals to ____ through their memories, finding meaning and connection.",
+      "answer": "comb",
+      "hintCn": "梳理"
+    },
+    {
+      "id": "c12",
+      "sentence": "Whenever people allocate their resources toward travel or learning, they tend to ____ higher levels of satisfaction accurately.",
+      "answer": "predict",
+      "hintCn": "预测"
+    },
+    {
+      "id": "c13",
+      "sentence": "____ people allocate their resources toward travel or learning, they tend to predict higher levels of satisfaction.",
+      "answer": "Whenever",
+      "hintCn": "每当"
+    },
+    {
+      "id": "c14",
+      "sentence": "The very act of accumulating goods can become a barrier to genuine fulfillment, as the need for ____ space grows.",
+      "answer": "storage",
+      "hintCn": "存储"
+    },
+    {
+      "id": "c15",
+      "sentence": "For instance, a hike through a dense bush or a shared ____ with close friends can arouse positive emotions.",
+      "answer": "dinner",
+      "hintCn": "晚餐"
+    },
+    {
+      "id": "c16",
+      "sentence": "The very act of accumulating goods can become a ____ to genuine fulfillment.",
+      "answer": "barrier",
+      "hintCn": "障碍"
+    },
+    {
+      "id": "c17",
+      "sentence": "On a broader ____, societies that emphasize experiential living report higher levels of overall well-being.",
+      "answer": "scale",
+      "hintCn": "规模"
+    },
+    {
+      "id": "c18",
+      "sentence": "For instance, a hike through a dense bush or a shared dinner with close friends can arouse positive emotions and foster ____ thinking.",
+      "answer": "creative",
+      "hintCn": "创造性的"
     }
   ],
-  "createdAt": "2026-05-20T06:26:42.597Z"
+  "createdAt": "2026-05-20T08:14:35.825Z"
 }

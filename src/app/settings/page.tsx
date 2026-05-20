@@ -116,31 +116,55 @@ export default function SettingsPage() {
           )}
         </Section>
 
-        {/* Daily Words */}
-        <Section title="每日学习量">
+        {/* Daily Learning Words */}
+        <Section title="今日学习词量">
+          <p className="text-sm text-gray-500 mb-4">
+            今日计划学习和复习多少个词，不代表一篇文章要全部嵌入。
+          </p>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-gray-500 mb-1">新词数</label>
+              <label className="block text-sm text-gray-500 mb-1">今日新词</label>
               <input
                 type="number"
-                min={1}
-                max={30}
+                min={0}
+                max={300}
                 value={plan.dailyNewWords}
                 onChange={(e) => setPlan({ ...plan, dailyNewWords: Number(e.target.value) })}
                 className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:border-[var(--color-primary)] outline-none"
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-500 mb-1">复习词数</label>
+              <label className="block text-sm text-gray-500 mb-1">今日复习词</label>
               <input
                 type="number"
-                min={1}
-                max={30}
+                min={0}
+                max={300}
                 value={plan.dailyReviewWords}
                 onChange={(e) => setPlan({ ...plan, dailyReviewWords: Number(e.target.value) })}
                 className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:border-[var(--color-primary)] outline-none"
               />
             </div>
+          </div>
+        </Section>
+
+        {/* Per-Article Target Word Count */}
+        <Section title="单篇阅读目标词">
+          <p className="text-sm text-gray-500 mb-4">
+            一篇阅读里嵌入多少个目标词。不建议把大量词塞进一篇文章。
+          </p>
+          <div>
+            <label className="block text-sm text-gray-500 mb-1">每篇阅读目标词数</label>
+            <input
+              type="number"
+              min={3}
+              max={24}
+              value={plan.readingTargetWordCount}
+              onChange={(e) => setPlan({ ...plan, readingTargetWordCount: Number(e.target.value) })}
+              className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:border-[var(--color-primary)] outline-none"
+            />
+            <p className="text-xs text-gray-400 mt-2">
+              建议：四级 8-14 个，六级 10-18 个，考研/雅思/托福 12-24 个。
+            </p>
           </div>
         </Section>
 

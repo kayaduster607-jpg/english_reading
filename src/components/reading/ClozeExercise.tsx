@@ -5,9 +5,10 @@ import type { ClozeQuestion } from '@/shared/types';
 
 interface ClozeExerciseProps {
   questions: ClozeQuestion[];
+  onSubmitted?: () => void;
 }
 
-export function ClozeExercise({ questions }: ClozeExerciseProps) {
+export function ClozeExercise({ questions, onSubmitted }: ClozeExerciseProps) {
   const [inputs, setInputs] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
 
@@ -56,7 +57,7 @@ export function ClozeExercise({ questions }: ClozeExerciseProps) {
       </div>
       {!showResults && (
         <button
-          onClick={() => setShowResults(true)}
+          onClick={() => { setShowResults(true); onSubmitted?.(); }}
           disabled={Object.keys(inputs).length < questions.length}
           className="mt-6 px-5 py-2 bg-[var(--color-primary)] text-white rounded-lg hover:bg-[var(--color-primary-dark)] transition-colors text-sm disabled:opacity-40"
         >

@@ -4,7 +4,7 @@ export class MockAIProvider implements AIProvider {
   async generateReading(input: AIReadingInput): Promise<AIReadingOutput> {
     const { examProfile, targetWords, topic } = input;
     const selectedTopic = topic || 'technology and daily life';
-    const words = targetWords.slice(0, 10);
+    const words = targetWords;
 
     const paragraphs = this.buildParagraphs(words, examProfile);
 
@@ -13,6 +13,7 @@ export class MockAIProvider implements AIProvider {
       title: this.generateTitle(selectedTopic),
       guideCn: `本文围绕"${selectedTopic}"展开，适合${examProfile.name}水平学习者。文章中自然嵌入了${words.length}个目标词汇，帮助你在语境中理解和记忆这些重要单词。`,
       paragraphs,
+      translationCn: paragraphs.map((p) => `[中文翻译] ${p}`),
       vocabularyInContext: words.map((w) => ({
         word: w.word,
         sentence: this.findSentence(paragraphs, w.word) || `${w.word} is used in this article.`,
@@ -47,15 +48,27 @@ export class MockAIProvider implements AIProvider {
   }
 
   private buildParagraphs(words: VocabItem[], exam: AIReadingInput['examProfile']): string[] {
-    const w = words.map((item) => item.word);
-    const used = (i: number) => w[i % w.length];
+    const paragraphCount = exam.paragraphCount.min;
+    const buckets: VocabItem[][] = Array.from({ length: paragraphCount }, () => []);
+    words.forEach((word, index) => {
+      buckets[index % paragraphCount].push(word);
+    });
 
-    return [
-      `In today's rapidly changing world, the concept of ${used(0)} has become increasingly important. Many researchers have begun to ${used(1)} new approaches to understand how these changes affect our daily lives. The evidence suggests that we need to ${used(2)} more attention to this growing phenomenon.`,
-      `Experts in the field argue that ${used(3)} is one of the key factors driving this transformation. When we ${used(4)} the current situation carefully, we can see that the impact extends far beyond what most people realize. It is ${used(5)} that this trend will continue to shape our future.`,
-      `Some scholars take a more cautious approach, suggesting that we should not ${used(6)} too quickly to conclusions. They believe that a ${used(7)} understanding of the underlying principles is necessary before we can make meaningful progress. The ${used(8)} of their research points to a more nuanced view of the issue.`,
-      `In ${used(9)}, the journey toward understanding these complex issues requires both patience and dedication. As we continue to explore new possibilities, we must remain open to different perspectives and be willing to adapt our thinking accordingly. The future depends on our ability to learn and grow.`,
-    ].slice(0, exam.paragraphCount.min);
+    const paragraphs = buckets.map((bucket, index) => {
+      const embeddedSentences = bucket
+        .map((item) => `The discussion also introduces ${item.word}, a term that learners should understand through context rather than memorise mechanically.`)
+        .join(' ');
+
+      if (index === 0) {
+        return `In a society shaped by rapid economic, cultural, and technological change, people are often required to interpret information with greater care than before. Instead of accepting every claim at face value, educated readers need to examine causes, consequences, and hidden assumptions. ${embeddedSentences}`;
+      }
+      if (index === paragraphCount - 1) {
+        return `Although the issue may appear simple at first, it becomes more complicated when different groups, interests, and long-term effects are considered together. A mature response therefore requires evidence, patience, and a willingness to revise earlier views. ${embeddedSentences}`;
+      }
+      return `One important aspect of this topic is the tension between individual choice and broader social influence. When people make decisions, they are rarely acting in isolation; their judgments are shaped by education, media, institutions, and personal experience. ${embeddedSentences}`;
+    });
+
+    return paragraphs;
   }
 
   private findSentence(paragraphs: string[], word: string): string | null {

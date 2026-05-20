@@ -5,9 +5,10 @@ import type { ReadingQuestion } from '@/shared/types';
 
 interface ComprehensionQuestionsProps {
   questions: ReadingQuestion[];
+  onSubmitted?: () => void;
 }
 
-export function ComprehensionQuestions({ questions }: ComprehensionQuestionsProps) {
+export function ComprehensionQuestions({ questions, onSubmitted }: ComprehensionQuestionsProps) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
 
@@ -60,7 +61,7 @@ export function ComprehensionQuestions({ questions }: ComprehensionQuestionsProp
       </div>
       {!showResults && (
         <button
-          onClick={() => setShowResults(true)}
+          onClick={() => { setShowResults(true); onSubmitted?.(); }}
           disabled={Object.keys(answers).length < questions.length}
           className="mt-6 px-5 py-2 bg-[var(--color-primary)] text-white rounded-lg hover:bg-[var(--color-primary-dark)] transition-colors text-sm disabled:opacity-40"
         >

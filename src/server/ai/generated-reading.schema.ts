@@ -8,9 +8,13 @@ export function validateAIOutput(data: unknown): data is AIReadingOutput {
   if (typeof obj.title !== 'string') return false;
   if (typeof obj.guideCn !== 'string') return false;
   if (!Array.isArray(obj.paragraphs)) return false;
+  if (!Array.isArray(obj.translationCn)) return false;
   if (!Array.isArray(obj.vocabularyInContext)) return false;
   if (!Array.isArray(obj.questions)) return false;
   if (!Array.isArray(obj.cloze)) return false;
+
+  // translationCn length must match paragraphs
+  if (obj.translationCn.length !== obj.paragraphs.length) return false;
 
   // Validate questions have required fields
   for (const q of obj.questions as Record<string, unknown>[]) {
@@ -31,7 +35,6 @@ export function validateAIOutput(data: unknown): data is AIReadingOutput {
 }
 
 export function sanitizeAIOutput(raw: string): unknown {
-  // Remove markdown code block wrappers if present
   let cleaned = raw.trim();
   if (cleaned.startsWith('```')) {
     cleaned = cleaned.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '');
