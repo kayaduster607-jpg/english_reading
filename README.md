@@ -1,375 +1,101 @@
-# English Reading Lab
+# English Reading · 用阅读练习自己的单词
 
-基于 AI 的英语考试阅读生成与词汇巩固系统。上传词书 → AI 生成阅读 → 答题巩固 → 智能复习。
+先选择词书和学习目标，再生成包含这些词的英文阅读，完成阅读理解、填空和词汇自测。把词放回上下文，随后根据熟悉度和复习时间继续练习。
 
-## 先用一次：词书和主题，怎样变成阅读练习
+项目是 Next.js 全栈应用。可先使用无需 Key 的模板模式体验整个流程，再接入 DeepSeek 生成；学习数据保存在运行服务的 `data/`，适合个人本地使用。
 
-| 输入 | 例子 | 输出 |
-| --- | --- | --- |
-| 学习目标与词书 | 六级、内置词书或自己的词书 | 本次阅读的选词范围与难度配置 |
-| 可选主题与目标词量 | 主题technology；一篇放入8至24个目标词更易阅读 | 英文文章、中文导读/翻译、目标词、阅读题和填空 |
-| 阅读后的答题与熟悉度 | 对目标词选择不认识/模糊/熟悉/掌握，并提交题目答案 | 单词状态、复习安排与阅读历史 |
+[运行演示](#先用模板模式运行) · [生成第一篇阅读](#生成第一篇阅读) · [导入自己的词书](#导入自己的词书) · [真实模型](#切换真实模型) · [数据](#学习记录保存在哪里)
 
-### 不填Key的第一遍
+## 先用模板模式运行
 
-安装依赖后，可在PowerShell显式启用本地模板：
+建议使用 Node.js 22 和 npm，在 Windows PowerShell 运行：
 
 ```powershell
+git clone https://github.com/kayaduster607-jpg/english_reading.git
+cd english_reading
+npm install
 $env:AI_PROVIDER = "mock"
 npm run dev
 ```
 
-1. 访问 `http://localhost:3000/settings`，选择考试目标和活跃词书并保存。mock不用Key，但输出是模板演示，不代表真实AI质量。
-2. 进入 `/today`，选择本次用的词书，主题填 `technology`，设置本篇目标词量，点击“生成今日阅读”。
-3. 读文章，查看目标词及上下文解释，完成阅读理解和填空，再提交熟悉度反馈。
-4. 打开历史页和复习页，检查本次阅读与词汇状态是否保存。重复生成可能覆盖当天文章，注意界面确认提示。
+打开 [http://localhost:3000](http://localhost:3000)。安装依赖可能需要联网；运行 mock 不调用模型。模板模式用于熟悉输入、答题和保存流程，文章内容不代表真实模型生成质量。
 
-### 输入自己的词书
+## 生成第一篇阅读
 
-在 `/vocab` 点击上传，选择TXT/CSV/Excel/PDF，先预览与编辑，再“确认导入”。CSV必须有 `word` 和 `meaning` 列，`pos`、`example`可选；TXT每行至少两列，可用制表符、竖线或逗号分开，例如英文单词与释义。扫描PDF和复杂排版不保证识别正确，应检查预览。
+1. 进入 `/settings`，选择考试目标、活跃词书和学习计划，保存设置。可以先使用内置词书。
+2. 进入 `/today`，主题填 `technology`，选择本篇词书，设置目标词量。第一篇可从 8–24 个目标词开始，避免一次堆入过多词。
+3. 点击“生成今日阅读”，等待生成与校验完成。阅读正文，结合上下文查看目标词释义。
+4. 完成阅读理解和填空，再提交词汇熟悉度：不认识、模糊、熟悉或掌握。
+5. 进入历史与复习页面，检查文章、答题和词汇状态。再次生成当天阅读时留意覆盖确认。
 
-**输出位置：**阅读、词书、计划与进度保存在服务器的 `data/`，当前界面不提供完整阅读PDF/Word导出。浏览器展示的文章不是存进你电脑下载目录。该实现以默认本地用户数据组织，不应把它直接理解成已经有多账号隔离。
+| 输入 | 输出 | 后续用途 |
+| --- | --- | --- |
+| 词书、主题、难度与本篇词量 | 英文文章、目标词、导读 / 翻译 | 在上下文中阅读 |
+| 题目答案 | 阅读理解和填空反馈 | 检查理解 |
+| 词汇熟悉度与练习反馈 | 状态、正确 / 错误次数、下次复习时间 | 下一次选词与复习 |
 
-## 技术栈
+结果显示在网页，并保存到服务端文件；不会自动下载为 Word 或 PDF。完整一轮应当包括生成、作答、提交反馈和重新查看记录，而不只是点击生成。
 
-| 层面 | 技术 |
-|------|------|
-| 前端框架 | Next.js 15.3 (App Router) |
-| 语言 | TypeScript 5.8 |
-| 样式 | Tailwind CSS 4.1 |
-| UI 库 | React 19.1 |
-| AI 引擎 | DeepSeek API (deepseek-v4-pro / deepseek-v4-flash) |
-| 数据存储 | 文件系统 JSON/JSONL（零数据库依赖） |
-| PDF 解析 | pdf-parse 2.4.5 + @napi-rs/canvas |
-| Excel 解析 | SheetJS (xlsx 0.18.5) |
+## 导入自己的词书
 
-## 环境要求
+在 `/vocab` 上传 TXT、CSV、Excel 或带文字层的 PDF，检查预览并编辑，再确认导入。先用下面的 UTF-8 CSV 小样本测试：
 
-| 工具 | 最低版本 | 说明 |
-|------|----------|------|
-| Node.js | 18.x | 推荐 20.x 或 22.x LTS |
-| npm | 9.x | 随 Node.js 自带 |
-
-> Windows 用户：pdf-parse 依赖的 `@napi-rs/canvas` 包含预编译的 native 二进制（win32-x64-msvc），**不需要额外安装 C++ 编译工具**，`npm install` 直接可用。如果遇到安装问题，见下方常见问题。
-
-## 快速开始
-
-```bash
-# 1. 克隆项目
-git clone https://github.com/kayaduster607-jpg/english_reading.git
-cd english_reading
-
-# 2. 安装依赖（约 30 秒，包含 native 模块）
-npm install
-
-# 3. 配置环境变量
-cp .env.example .env.local
-# 用编辑器打开 .env.local，填入你的 DeepSeek API Key
-
-# 4. 启动开发服务器
-npm run dev
-# 浏览器访问 http://localhost:3000
+```csv
+word,meaning,pos,example
+retrieve,检索,v.,Retrieve relevant documents.
+context,上下文,n.,Use the context to answer.
+evidence,证据,n.,Check the evidence first.
 ```
 
-> **开发阶段无需 API Key**：在 `.env.local` 中设置 `AI_PROVIDER=mock`，系统使用本地模板生成器，无需调用 DeepSeek API。
+`word` 与 `meaning` 必填，`pos`、`example` 可选。TXT 每行至少有英文和释义，可用制表符、竖线或逗号分隔。复杂 PDF、扫描件或混排表格需检查识别结果，预览完成尚未等于词书已保存。
 
-## 环境变量
+规则解析失败时存在 AI 辅助提取路径，真实服务是否可用取决于模型配置；不要假定 mock 能处理任意扫描或复杂排版。
 
-所有环境变量在 `.env.local` 文件中配置（参考 `.env.example`）：
+## 切换真实模型
 
-| 变量 | 必填 | 默认值 | 说明 |
-|------|------|--------|------|
-| `AI_PROVIDER` | 否 | `deepseek` | AI 引擎：`mock`（本地模板，免 API）或 `deepseek`（真实 AI） |
-| `DEEPSEEK_API_KEY` | 条件 | - | DeepSeek API 密钥，`AI_PROVIDER=deepseek` 时必填 |
-| `DEEPSEEK_MODEL` | 否 | `deepseek-v4-pro` | 模型选择：`deepseek-v4-pro`（质量优先）或 `deepseek-v4-flash`（速度优先） |
+停止开发服务，在同一终端设置进程变量后重新启动：
+
+```powershell
+$env:AI_PROVIDER = "deepseek"
+$readingKey = Read-Host "DeepSeek API Key" -AsSecureString
+$env:DEEPSEEK_API_KEY = [System.Net.NetworkCredential]::new("", $readingKey).Password
+npm run dev
+```
+
+`DEEPSEEK_MODEL` 可指定你实际有权限调用的模型；默认值来自项目代码，服务可用性以提供方账号为准。Key 仅用于服务端，不要写入前端或提交到 Git。
+
+真实生成通过 SSE 展示阶段进度，随后校验篇幅、目标词覆盖和题目结构，失败时重试。能打开页面不等于模型请求已经成功，应查看生成阶段的具体提示。
+
+## 为什么下一篇会选不同的词
+
+选词服务综合新词、薄弱词、到期复习和近期曝光，降低刚见过词的优先级，并排除已掌握词。阅读生成只记录“出现过”；提交自测后才更新练习次数、熟悉度、状态和下次复习时间。
+
+```mermaid
+flowchart LR
+    A[词书与学习计划] --> B[选择目标词]
+    B --> C[模板或模型生成]
+    C --> D[文章与题目校验]
+    D --> E[阅读并作答]
+    E --> F[词汇进度与复习安排]
+    F --> B
+```
+
+因此“文章中包含某词”与“已经掌握该词”是不同状态，实际学习仍需要作答和反馈。
+
+## 学习记录保存在哪里
+
+词书以元数据与词条文件组织，阅读、学习计划和进度保存在服务器 `data/`。当前实现围绕默认本地用户组织数据，没有完整多账号隔离；不要直接作为公开多人服务使用。
+
+备份时停止写入，复制完整 `data/`，而不是只保存浏览器页面。生成流程会清理 15 天外的旧阅读，重要文章请及时另存。更换运行目录或服务实例后，需要明确迁移数据。
 
 ## 常见问题
 
-### npm install 报错 / 卡住不动
+| 现象 | 检查方法 |
+| --- | --- |
+| 不填 Key 却请求模型 | 是否在启动 npm 的同一终端设置 AI_PROVIDER=mock |
+| 自定义词书没出现 | 是否完成预览后的确认导入，活跃词书是否切换 |
+| 阅读完成但进度没变 | 是否提交题目或词汇反馈，而非只浏览文章 |
+| 3000 被占用 | 查看 Next 输出的实际端口，使用对应地址 |
+| 安装 / 生成失败 | 先记录依赖或服务的原始错误，不把安装等待时间当作固定承诺 |
 
-```bash
-# 1. 清理缓存后重试
-rm -rf node_modules package-lock.json
-npm install
-
-# 2. 如果 @napi-rs/canvas 安装失败，检查 Node.js 版本 >= 18
-node -v
-
-# 3. Windows 下确保没有杀毒软件拦截 node-gyp
-```
-
-### 端口被占用
-
-```bash
-# 修改端口启动
-npx next dev -p 3001
-```
-
-### PyCharm 中 npm install 卡死
-
-在 PyCharm 内置终端中 `npm install` 可能因输出缓冲导致假死。**推荐使用系统终端（PowerShell / CMD）执行**，或在 PyCharm 终端中加 `--loglevel=error` 减少输出：
-
-```bash
-npm install --loglevel=error
-```
-
-## 项目结构
-
-```
-src/
-├── app/                          # Next.js App Router 页面与 API
-│   ├── api/                      # API Routes
-│   │   ├── exams/                # GET 考试配置列表
-│   │   ├── readings/             # 阅读生成、查询、历史
-│   │   │   ├── generate/         # POST 同步生成
-│   │   │   ├── generate-stream/  # POST SSE 流式生成（带进度条）
-│   │   │   ├── history/          # GET 历史阅读列表（?days=N）
-│   │   │   └── today/            # GET 今日阅读
-│   │   ├── review/submit/        # POST 提交复习结果
-│   │   ├── user/plan/            # GET/PUT 学习计划
-│   │   ├── user/progress/        # GET 词汇掌握进度
-│   │   └── vocab/                # 词书管理
-│   │       ├── books/            # GET 词书列表
-│   │       ├── search/           # GET 搜索词书
-│   │       ├── upload/           # POST 上传词书（同步导入）
-│   │       ├── import-preview/   # POST 解析预览（多模式可选）
-│   │       └── import-confirm/   # POST 确认导入
-│   ├── today/                    # 今日阅读页（核心页面）
-│   ├── readings/[id]/            # 历史阅读详情页
-│   ├── review/                   # 词汇复习仪表盘
-│   ├── history/                  # 阅读历史列表
-│   ├── settings/                 # 学习设置页
-│   └── vocab/                    # 词书管理页
-├── components/reading/           # 阅读相关 UI 组件
-│   ├── HighlightedText.tsx       # 目标词高亮文本
-│   ├── TargetWordPanel.tsx       # 目标词侧边面板
-│   ├── ComprehensionQuestions.tsx # 阅读理解题
-│   ├── ClozeExercise.tsx         # 完形填空练习
-│   └── GenerationProgress.tsx    # 生成进度条（SSE 流式）
-├── server/                       # 服务端代码
-│   ├── ai/                       # AI 引擎
-│   │   ├── provider.ts           # 提供者工厂（DeepSeek/Mock）
-│   │   ├── deepseek-provider.ts  # DeepSeek API 调用
-│   │   ├── mock-provider.ts      # 本地模板生成器
-│   │   ├── prompts.ts            # Prompt 构建 + 考试难度细则
-│   │   └── generated-reading.schema.ts # JSON 输出校验
-│   ├── parsers/                  # 词书文件解析器
-│   │   ├── parser-factory.ts     # 解析器工厂（按扩展名路由）
-│   │   ├── txt-parser.ts         # TXT 解析
-│   │   ├── csv-parser.ts         # CSV 解析（自动检测表头）
-│   │   ├── xlsx-parser.ts        # Excel 解析（.xlsx/.xls）
-│   │   ├── pdf-parser.ts         # PDF 解析入口（按模式路由）
-│   │   └── pdf-vocab-text-parser.ts # PDF 三策略解析引擎
-│   ├── repositories/             # 数据访问层
-│   │   ├── exam.repository.ts    # 考试配置
-│   │   ├── user.repository.ts    # 用户计划/Profile
-│   │   ├── reading.repository.ts # 阅读文章 CRUD + 历史清理
-│   │   ├── progress.repository.ts # 词汇进度追踪
-│   │   └── vocab-book.repository.ts # 词书管理
-│   ├── services/                 # 业务逻辑层
-│   │   ├── reading-generation.service.ts # 阅读生成核心流程
-│   │   ├── reading-validation.service.ts # 文章质量校验
-│   │   ├── vocab-selection.service.ts     # 智能选词算法
-│   │   ├── review.service.ts              # 复习提交处理
-│   │   └── vocab-ai-extract.service.ts    # DeepSeek 辅助词条提取
-│   └── storage/                  # 存储底层工具
-│       ├── json.ts               # JSON 读写（原子写入）
-│       ├── jsonl.ts              # JSONL 读写
-│       ├── file-system.ts        # 文件系统操作
-│       └── path.ts               # 路径解析
-├── shared/                       # 共享代码
-│   ├── types.ts                  # 全部 TypeScript 类型定义
-│   ├── constants.ts              # 常量（考试列表、主题、默认值）
-│   ├── date.ts                   # 日期工具
-│   ├── id.ts                     # ID 生成
-│   ├── word-count.ts             # 字数统计
-│   ├── reading-target-limits.ts  # 按考试的目标词限制
-│   └── history.ts                # 历史保留策略（15天）
-└── app/globals.css               # 全局样式 + CSS 变量主题
-```
-
-## 数据目录结构
-
-```
-data/
-├── app.json                      # 应用元数据
-├── cache/                        # 缓存
-├── exams/                        # 7种考试配置（CET4/6/考研/雅思/托福/中考/高考）
-├── users/default/                # 默认用户数据
-│   ├── plan.json                 # 学习计划
-│   ├── profile.json              # 用户信息
-│   ├── progress.json             # 词汇掌握进度
-│   ├── readings/                 # 阅读文章（按 年/月/日.json 组织）
-│   │   ├── index.json
-│   │   └── 2026/05/
-│   └── review-log.jsonl          # 复习日志
-└── vocab-books/                  # 词书
-    ├── builtin/                  # 内置词书
-    └── uploaded/                 # 上传词书
-```
-
-## 核心架构
-
-```
-用户上传词书（TXT/CSV/XLSX/PDF）
-        │
-        ▼
-  多策略解析器 ─── 如果规则解析失败 ──→ DeepSeek 辅助提取
-        │
-        ▼
-  词书存储（meta.json + words.jsonl）
-        │
-        ▼
-用户设置学习计划（考试目标、每日词量、单篇目标词数）
-        │
-        ▼
-生成阅读时 ──→ VocabSelectionService 智能选词
-        │         ├─ 弱词优先（+1000分）
-        │         ├─ 到期复习优先（+500分）
-        │         ├─ 新词（+700分）
-        │         ├─ 3天内见过降权（-800分）
-        │         └─ mastered 排除（-1000分）
-        │
-        ▼
-  DeepSeek 生成文章 ──→ SSE 流式进度推送
-        │                10%→25%→35%→42-82%→88%→94%→97%→100%
-        ▼
-  ReadingValidationService 校验
-        │  ├─ 字数检查（95%-115% 容差）
-        │  ├─ 目标词全部出现
-        │  └─ 题目答案正确性
-        ▼
-  失败 → 自动重试（最多3次）
-  成功 → 保存文章 + markWordsExposed（记录词已出现）
-        → pruneOldReadings（清理15天外旧文章）
-        │
-        ▼
-用户阅读文章 → 答题 → 全文翻译 → 词汇自测 → 提交复习
-        │                                        │
-        └── progress.json 更新 ◄─────────────────┘
-              ├─ practiceCount++
-              ├─ correctCount++ / wrongCount++
-              ├─ familiarity 变化
-              ├─ status 重新计算
-              └─ nextReviewAt 间隔设置
-```
-
-## 支持的考试
-
-| 考试 | CEFR | 文章字数 | 单篇目标词 |
-|------|------|----------|------------|
-| 中考 | A2-B1 | 200-300 | 4-8 |
-| 高考 | B1 | 280-380 | 6-12 |
-| 四级 CET-4 | B1-B2 | 320-420 | 8-14 |
-| 六级 CET-6 | B2 | 420-520 | 10-18 |
-| 考研 | B2-C1 | 480-600 | 12-24 |
-| 雅思 IELTS | B2-C1 | 600-800 | 12-24 |
-| 托福 TOEFL | B2-C1 | 600-800 | 12-24 |
-
-## 词汇掌握状态机
-
-```
-new ───(阅读中出现)───→ learning ───(正确率高)───→ familiar ───(持续正确)───→ mastered
-  │                         │                        │                      │
-  └──(用户标记不认识)──→ weak ←─(连续错误)────────────┘                      │
-       │                                                                    │
-       └──(重新学习)──→ learning ───────────────────────────────────────────┘
-```
-
-## 版本历史
-
-### v0.1.0 — MVP 初始化 (2026-05-20)
-- **Commit: `ee9561d` — `init: MVP`**
-  - 项目骨架搭建：Next.js 15.3 + TypeScript + Tailwind CSS 4
-  - 文件系统存储层（JSON/JSONL 读写、路径解析、原子写入）
-  - 7种考试配置（中考→托福），含 CEFR 等级、字数范围、段落数、题型
-  - 基础类型系统：ExamProfile、VocabItem、VocabBook、GeneratedReading、UserPlan
-  - Mock AI Provider：模板生成器，支持 8 个固定主题
-  - 内置 CET-6 核心词书（30词）
-  - Repository 模式数据访问层
-  - 基础页面：今日阅读、词书管理、设置、历史、复习仪表盘
-  - API 路由：exams、readings/today、readings/generate、user/plan、vocab/books
-  - 全局 CSS 主题变量（绿色主色调 `#2f6b4f`）
-
-### v0.2.0 — AI 生成 + 多格式导入 (2026-05-20)
-- **Commit: `69a2ade` / `69a4368` — `接入AI生成高质量文章，篇幅增加，可导入excel，txt格式的单词书`**
-  - DeepSeek Provider：调用 Chat Completions API，`response_format: json_object`
-  - Prompt 构建系统：考试难度说明、13条硬性要求、JSON 输出格式模板
-  - 文章质量校验：字数检查、目标词全覆盖验证、题目答案正确性
-  - 全文中文翻译 `translationCn`：与 paragraphs 一一对应，答题后展示
-  - TXT 解析器：支持 tab/竖线/逗号分隔
-  - CSV 解析器：自动检测中英文表头
-  - Excel 解析器：SheetJS 集成，多 Sheet 支持，中英文表头检测
-  - 词书上传预览流程：上传 → 解析 → 编辑预览 → 确认导入
-  - `VocabSelectionService`：基础选词（新词优先、弱词优先、复习到期优先）
-  - `ReviewService`：提交复习 → 更新 familiarity/status/nextReviewAt
-  - `ComprehensionQuestions` 组件：4选项交互 + 颜色反馈 + 中文解析
-  - `ClozeExercise` 组件：填空 + 中文提示 + 即时反馈
-  - 今日阅读页重设计：双栏布局（文章+侧边词面板）、生成表单
-  - `HighlightedText` 组件：目标词黄色高亮
-  - `TargetWordPanel` 组件：可展开的词汇上下文面板
-  - 设置页：考试选择、词书启用、主题偏好
-
-### v0.3.0 — PDF 导入 + 可视化进度 + 核心产品逻辑重构 (2026-05-20)
-- **Commit: `817aeb7` / `82ba66c` — `可导入pdf单词书，增加AI生成文章的可视化进度`**
-  
-  **核心产品逻辑重构：**
-  - 新增 `readingTargetWordCount` 字段，与 `dailyNewWords`/`dailyReviewWords` 分离
-  - "每日学习词量"和"单篇阅读目标词"拆为独立概念
-  - 新增 `reading-target-limits.ts`：按考试限制单篇目标词范围
-  - 生成服务不再把 dailyNewWords+dailyReviewWords 当单篇目标词
-
-  **智能选词算法升级：**
-  - 稳定的哈希扰动替代 `Math.random()`（同日同词得分稳定）
-  - 最近 3 天出现过的词降权 -800
-  - 高级考试自动降低基础词优先级（good/huge/same...）
-  - 40% 复习词 + 60% 新词配额分配
-  - 生成成功后 `markWordsExposed`：立即记录词已出现
-  - 提交答案不再重复增加 `seenCount`，新增 `practiceCount`
-
-  **AI 生成体验：**
-  - SSE 流式生成接口：`POST /api/readings/generate-stream`
-  - `GenerationProgress` 进度条组件
-  - 生成阶段：10%读计划 → 25%选词 → 35%请求AI → 42-82%生成中 → 88%校验 → 94%保存 → 97%更新进度 → 100%完成
-  - DeepSeek `max_tokens` 提升至 9000
-  - 生成失败自动重试 3 次
-
-  **PDF 词书导入：**
-  - pdf-parse 集成 + Next.js serverExternalPackages 配置
-  - 三策略解析引擎：`inline-numbered`（编号词表）/ `momo-table`（表格词书）/ `simple-line`（简单行格式）
-  - `auto` 模式自动合并三种策略结果
-  - 解析质量评分：准确率、策略统计、疑似词条数
-  - 解析模式选择器：用户可根据 PDF 类型手动选择
-  - DeepSeek 辅助解析兜底：规则失败时 AI 抽取词条
-  - 预览区分页显示（每页80条），避免大数据量卡顿
-  - `.env.local` 加入 `.gitignore`，防止 API Key 泄露
-
-  **Prompt 增强：**
-  - 按考试添加风格细则（CET-6 要求分析性论述，考研要求社论风格等）
-  - 新增 5 条硬性要求（不写低龄故事、基础词不影响难度、需要抽象论述等）
-
-  **历史管理：**
-  - 历史保留 15 天，`HistoryRetentionDays = 15`
-  - 生成新文章自动清理过期文件
-  - 历史 API 支持 `?days=N` 参数
-
-  **字数校验强化：**
-  - `validateWordCount` 从 `console.warn` 改为 `throw Error`
-  - 字数不足触发自动重试
-
-## 已知问题与待解决
-
-1. **PDF 扫描版不支持**：当前 PDF 解析依赖可复制文字层，扫描版/图片型 PDF 无法提取文字，需 OCR 方案
-2. **PDF 排版容错有限**：复杂多栏、跨页拆分、不规则排版仍可能漏词，需视具体 PDF 调整策略
-3. **单用户硬编码**：当前仅支持 `default` 用户，无登录/多用户系统
-4. **无数据库持久化**：文件系统存储在并发写入场景下可能有问题，不适合生产部署
-5. **AI 生成延迟**：DeepSeek 调用单次约 15-45 秒，进度条是模拟阶段式而非真实 token 进度
-6. **Prompt 依赖**：文章质量高度依赖 Prompt，对不同考试可能需要微调
-7. **词汇数据无词频分级**：选词仅基于用户 progress，未引入外部词频数据
-8. **移动端适配未完成**：双栏布局在小屏上需优化
-9. **无测试覆盖**：无单元测试或集成测试
-10. **复习算法简化**：Spaced Repetition 算法较简单，可用 SM-2 等成熟算法替代
-
-## License
-
-Private project.
+开发生产命令见 `package.json`：`npm run dev`、`npm run build`、`npm run start`。版本和逻辑以代码为准；当前 README 不将历史计划中的能力列为已完成。
